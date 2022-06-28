@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="bootcampjs/greet.js" defer></script>
+    <script src="widgetjs/greet-widget.js" defer></script>
+    <script src="bootcampjs/shift.js" defer></script>
+    <script src="bootcampjs/phone-bill.js" defer></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>                                                                                                    
+        <h1>AlpineJS widgets for Bootcamp functions</h1>
+    </header>
+    <div class="container">
+
+        <div class="box" x-data="greetWidget">
+            <h2>Greet widget</h2>
+            <div class="message" x-text="greetMessage">  
+                <!-- The message will be displayed here... -->
+            </div>
+            <label for="string">Please submit your name: </label>
+            <input type="text" id="string" x-model="name"> 
+
+            <button x-on:click="greetMe">submit</button> 
+        </div>
+
+        <div class="box" x-data= "{
+            shiftMsg : '',
+            shift : 'value',
+            displayShift() {
+                this.shiftMsg = transportFee(this.shift);
+            }
+
+        }">
+            <h2>Transport fee per shift</h2>
+            <div x-text="shiftMsg" class="message">
+                <!-- The message will be displayed here... -->
+            </div>
+            <fieldset>
+                <legend>Please select your shift: </legend>
+            
+                <div>
+                  <input x-model="displayShift" type="radio" id="morning" value="morning">
+                  <label for="morning">Morning</label>
+                </div>
+            
+                <div>
+                  <input x-model="displayShift" type="radio" id="afternoon" value="afternoon">
+                  <label for="afternoon">Afternoon</label>
+                </div>
+            
+                <div>
+                  <input x-model="displayShift" type="radio" id="night" value="nightshift">
+                  <label for="night">Night</label>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="box" x-data="{
+            phoneUsage : '',
+            billAmount : '',
+            totalBill() {
+                this.billAmount = totalPhoneBill(this.phoneUsage);
+
+                setTimeout(() => {
+                    this.billAmount = '';
+                    this.phoneUsage = '';
+                }, 3500)
+            }
+        }">
+            <h2>Phone bill calculator</h2>
+            <div class="message" x-text="billAmount">
+                The message will be displayed here...
+            </div>
+            <label for="msg">Enter your dail phone usages:</label>
+            <input type="text" id="msg" x-model="phoneUsage">
+            <button x-on:click="totalBill">submit</button>
+        </div>
+
+    </div>
+    <div class="container">
+
+        <div class="box" x-data="greetWidget">
+            <h2>Greet widget</h2>
+            <div class="message" x-text="greetMessage">  
+                <!-- The message will be displayed here... -->
+            </div>
+            <label for="string">Please submit your name: </label>
+            <input type="text" id="string" x-model="name"> 
+
+            <button x-on:click="greetMe">submit</button> 
+        </div>
+
+        <div class="box" x-data= "{
+            shiftMsg : '',
+            shift : 'value',
+            displayShift() {
+                this.shiftMsg = transportFee(this.shift);
+            }
+
+        }">
+            <h2>Transport fee per shift</h2>
+            <div x-text="shiftMsg" class="message">
+                <!-- The message will be displayed here... -->
+            </div>
+            <fieldset>
+                <legend>Please select your shift: </legend>
+            
+                <div>
+                  <input x-model="displayShift" type="radio" id="morning" value="morning">
+                  <label for="morning">Morning</label>
+                </div>
+            
+                <div>
+                  <input x-model="displayShift" type="radio" id="afternoon" value="afternoon">
+                  <label for="afternoon">Afternoon</label>
+                </div>
+            
+                <div>
+                  <input x-model="displayShift" type="radio" id="night" value="nightshift">
+                  <label for="night">Night</label>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="box" x-data="{
+            phoneUsage : '',
+            billAmount : '',
+            totalBill() {
+                this.billAmount = totalPhoneBill(this.phoneUsage);
+
+                setTimeout(() => {
+                    this.billAmount = '';
+                    this.phoneUsage = '';
+                }, 3500)
+            }
+        }">
+            <h2>Phone bill calculator</h2>
+            <div class="message" x-text="billAmount">
+                The message will be displayed here...
+            </div>
+            <label for="msg">Enter your dail phone usages:</label>
+            <input type="text" id="msg" x-model="phoneUsage">
+            <button x-on:click="totalBill">submit</button>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
