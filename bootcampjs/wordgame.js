@@ -1,5 +1,5 @@
 function longestWord(str) {
-    
+
     var words = str.split(' '); var longestIndex = '';
 
     for (var word of words) {
@@ -13,7 +13,7 @@ function longestWord(str) {
 // Shortest Function
 function shortestWord(str) {
     var words = str.split(' '); var shortestWordIndex = words[0];
-    
+
     for (var word of words) {
         if (word.length <= shortestWordIndex.length) {
             shortestWordIndex = word;

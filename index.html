@@ -10,6 +10,9 @@
     <script src="widgetjs/greet-widget.js" defer></script>
     <script src="bootcampjs/shift.js" defer></script>
     <script src="bootcampjs/phone-bill.js" defer></script>
+    <script src="bootcampjs/enough-airtime.js" defer></script>
+    <script src="bootcampjs/wordgame.js" defer></script>
+    <script src="bootcampjs/expensiveitems.js" defer></script>
     <script src="//unpkg.com/alpinejs" defer></script>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;900&display=swap"
@@ -17,23 +20,23 @@
 </head>
 
 <body>
-    <header>                                                                                                    
+    <header>
         <h1>AlpineJS widgets for Bootcamp functions</h1>
     </header>
     <div class="container">
 
         <div class="box" x-data="greetWidget">
             <h2>Greet widget</h2>
-            <div class="message" x-text="greetMessage">  
+            <div class="message" x-text="greetMessage">
                 <!-- The message will be displayed here... -->
             </div>
             <label for="string">Please submit your name: </label>
-            <input type="text" id="string" x-model="name"> 
+            <input type="text" id="string" x-model="name">
 
-            <button x-on:click="greetMe">submit</button> 
+            <button x-on:click="greetMe">submit</button>
         </div>
 
-        <div class="box" x-data= "{
+        <div class="box" x-data="{
             shiftMsg : '',
             shift : 'value',
             displayShift() {
@@ -47,20 +50,20 @@
             </div>
             <fieldset>
                 <legend>Please select your shift: </legend>
-            
+
                 <div>
-                  <input x-model="displayShift" type="radio" id="morning" value="morning">
-                  <label for="morning">Morning</label>
+                    <input x-model="displayShift" type="radio" id="morning" value="morning">
+                    <label for="morning">Morning</label>
                 </div>
-            
+
                 <div>
-                  <input x-model="displayShift" type="radio" id="afternoon" value="afternoon">
-                  <label for="afternoon">Afternoon</label>
+                    <input x-model="displayShift" type="radio" id="afternoon" value="afternoon">
+                    <label for="afternoon">Afternoon</label>
                 </div>
-            
+
                 <div>
-                  <input x-model="displayShift" type="radio" id="night" value="nightshift">
-                  <label for="night">Night</label>
+                    <input x-model="displayShift" type="radio" id="night" value="nightshift">
+                    <label for="night">Night</label>
                 </div>
             </fieldset>
         </div>
@@ -81,7 +84,7 @@
             <div class="message" x-text="billAmount">
                 The message will be displayed here...
             </div>
-            <label for="msg">Enter your dail phone usages:</label>
+            <label for="msg">Enter your daily phone usages:</label>
             <input type="text" id="msg" x-model="phoneUsage">
             <button x-on:click="totalBill">submit</button>
         </div>
@@ -89,58 +92,17 @@
     </div>
     <div class="container">
 
-        <div class="box" x-data="greetWidget">
-            <h2>Greet widget</h2>
-            <div class="message" x-text="greetMessage">  
-                <!-- The message will be displayed here... -->
-            </div>
-            <label for="string">Please submit your name: </label>
-            <input type="text" id="string" x-model="name"> 
-
-            <button x-on:click="greetMe">submit</button> 
-        </div>
-
-        <div class="box" x-data= "{
-            shiftMsg : '',
-            shift : 'value',
-            displayShift() {
-                this.shiftMsg = transportFee(this.shift);
-            }
-
-        }">
-            <h2>Transport fee per shift</h2>
-            <div x-text="shiftMsg" class="message">
-                <!-- The message will be displayed here... -->
-            </div>
-            <fieldset>
-                <legend>Please select your shift: </legend>
-            
-                <div>
-                  <input x-model="displayShift" type="radio" id="morning" value="morning">
-                  <label for="morning">Morning</label>
-                </div>
-            
-                <div>
-                  <input x-model="displayShift" type="radio" id="afternoon" value="afternoon">
-                  <label for="afternoon">Afternoon</label>
-                </div>
-            
-                <div>
-                  <input x-model="displayShift" type="radio" id="night" value="nightshift">
-                  <label for="night">Night</label>
-                </div>
-            </fieldset>
-        </div>
-
         <div class="box" x-data="{
             phoneUsage : '',
+            availableAmount: null,
             billAmount : '',
             totalBill() {
-                this.billAmount = totalPhoneBill(this.phoneUsage);
+                this.billAmount = enoughAirtime(this.phoneUsage, this.availableAmount);
 
                 setTimeout(() => {
                     this.billAmount = '';
                     this.phoneUsage = '';
+                    this.availableAmount = '';
                 }, 3500)
             }
         }">
@@ -148,12 +110,79 @@
             <div class="message" x-text="billAmount">
                 The message will be displayed here...
             </div>
-            <label for="msg">Enter your dail phone usages:</label>
-            <input type="text" id="msg" x-model="phoneUsage">
+
+            <div>
+                <label for="msg">Enter your daily phone usages:</label>
+                <input type="text" id="msg" x-model="phoneUsage">
+            </div>
+            <label for="msg">Enter available airtime:</label>
+            <input type="text" id="msg" x-model="availableAmount">
+
             <button x-on:click="totalBill">submit</button>
+        </div>
+        <div class="box" x-data="{
+            str : '',
+            longWord : '',
+            shortWord : '',
+            words : '',
+
+            sentence() {
+                this.longWord = longestWord(this.str);
+                this.shortWord = shortestWord(this.str);
+                this.words = wordLengths(this.str);
+
+                setTimeout(() => {
+                    this.longWord = '';
+                    this.shortWord = '';
+                    this.words = '';
+                    this.str = '';
+                }, 3500)
+            }
+            
+
+        }">
+            <h2>Word puzzle game</h2>
+            Longest word:<div class="message" x-text="longWord">
+                <!-- The message will be displayed here... -->
+            </div> <span>
+                Shortest word:<div class="message" x-text="shortWord">
+                <!-- The message will be displayed here... -->
+            </div>
+            Number of words:<div class="message" x-text="words">
+                <!-- The message will be displayed here... -->
+            </div>
+            <label for="string">Type your sentence in the field: </label>
+            <input type="text" id="string" x-model="str">
+
+            <button x-on:click="sentence">submit</button>
+        </div>
+
+        <div class="box" x-data="{
+
+            threshold : 0,
+            data : [],
+
+            expensiveItems() {
+                this.data = findItemsOver(this.itemList, this.threshold);
+                
+            }
+            
+        }">
+            <h2>Expensive items</h2>
+            <div class="message" x-text="data">
+                The message will be displayed here...
+            </div>
+            <div>
+                <label for="msg">Enter your dail phone usages:</label>
+                <input type="text" id="msg" x-model="itemList">
+            </div>
+            <label for="msg">Enter your dail phone usages:</label>
+            <input type="text" id="msg" x-model="threshold">
+            <button x-on:click="expensiveItems">submit</button>
         </div>
 
     </div>
+
 
 </body>
 
