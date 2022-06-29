@@ -1,6 +1,3 @@
-const itemList = [{ name: 'apples', qty: 10 }, { name: 'pears', qty: 37 }, { name: 'bananas', qty: 27 },
-{ name: 'apples', qty: 3 },
-];
 function findItemsOver20(itemList) {
     var results = [];
     for (var i = 0; i < itemList.length; i++) {
@@ -24,3 +21,6 @@ function findItemsOver(itemList, threshold) {
     };
     return results2;
 };
+
+
+// let list = [{name:"Tsepang",age:17},{name:"Xoli",age:72},{name:"Sbu",age:23}]

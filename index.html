@@ -158,12 +158,11 @@
         </div>
 
         <div class="box" x-data="{
-
+            message : '',
             threshold : 0,
-            data : [],
-
+            
             expensiveItems() {
-                this.data = findItemsOver(this.itemList, this.threshold);
+                this.data = findItemsOver(this.message, this.threshold);
                 
             }
             
@@ -174,7 +173,7 @@
             </div>
             <div>
                 <label for="msg">Enter your dail phone usages:</label>
-                <input type="text" id="msg" x-model="itemList">
+                <input type="text" id="msg" x-model="message">
             </div>
             <label for="msg">Enter your dail phone usages:</label>
             <input type="text" id="msg" x-model="threshold">
