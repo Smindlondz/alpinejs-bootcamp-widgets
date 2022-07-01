@@ -44,7 +44,8 @@
             }
 
         }">
-            <h2>Transport fee per shift</h2>
+            <!-- <h1 x-text="shift"> </h1> -->
+            <h2>Transport cost per shift</h2>
             <div x-text="shiftMsg" class="message">
                 <!-- The message will be displayed here... -->
             </div>
@@ -52,17 +53,17 @@
                 <legend>Please select your shift: </legend>
 
                 <div>
-                    <input x-model="displayShift" type="radio" id="morning" value="morning">
+                    <input x-model="shift" type="radio" name="cost" id="morning" value="morning">
                     <label for="morning">Morning</label>
                 </div>
 
                 <div>
-                    <input x-model="displayShift" type="radio" id="afternoon" value="afternoon">
+                    <input x-model="shift" type="radio" name="cost" id="afternoon" value="afternoon">
                     <label for="afternoon">Afternoon</label>
                 </div>
 
                 <div>
-                    <input x-model="displayShift" type="radio" id="night" value="nightshift">
+                    <input x-model="shift" type="radio" name="cost" id="night" value="nightshift">
                     <label for="night">Night</label>
                 </div>
             </fieldset>
@@ -160,22 +161,30 @@
         <div class="box" x-data="{
             message : '',
             threshold : 0,
-            
+            data : [],
+            itemList : [ {name : 'apples', qty : 10}, {name : 'pears', qty : 37}],
+
             expensiveItems() {
-                this.data = findItemsOver(this.message, this.threshold);
+                this. = findItemsOver(this.itemList, this.threshold);
                 
             }
             
         }">
+        <template x-for="item in itemList">
+            <li x-text="item.name">
+                
+            </li>
+        </template>
+
             <h2>Expensive items</h2>
-            <div class="message" x-text="data">
+            <div class="message">
                 The message will be displayed here...
             </div>
             <div>
-                <label for="msg">Enter your dail phone usages:</label>
+                <label for="msg"></label>
                 <input type="text" id="msg" x-model="message">
             </div>
-            <label for="msg">Enter your dail phone usages:</label>
+            <label for="msg"></label>
             <input type="text" id="msg" x-model="threshold">
             <button x-on:click="expensiveItems">submit</button>
         </div>
