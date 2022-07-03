@@ -1,5 +1,5 @@
 const greet = (name) => {
-    if (!name){
+    if (!name.trim()){
         return '';
     }
     return `Hello, ${name}!`;

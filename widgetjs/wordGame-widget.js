@@ -1,13 +1,13 @@
 document.addEventListener('alpine:init', () => {
 
-    Alpine.data('wordGameWidget', function () {
+    Alpine.data('wordWidget', function () {
         return {
             str : '',
             longWord : '',
             shortWord : '',
             wordLength : '',
 
-            sentence() {
+            mySentence() {
                 this.longWord = longestWord(this.str);
                 this.shortWord = shortestWord(this.str);
                 this.wordLength = wordLengths(this.str);

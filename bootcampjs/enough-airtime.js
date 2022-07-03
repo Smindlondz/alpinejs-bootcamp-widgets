@@ -3,7 +3,9 @@ function enoughAirtime(services, airtime) {
 
     let counter = 0;
     var totalServices = services.split(',');
-
+    if (!services.trim()){
+        return '';
+    }
     for (let i = 0; i < totalServices.length; i++) {
         const currentService = totalServices[i].trim();
         if (currentService.startsWith('s')) {

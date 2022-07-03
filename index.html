@@ -80,7 +80,7 @@
     </div>
     <div class="container">
 
-        <div class="box" x-data="enoughAirtimeWdget">
+        <div class="box" x-data="enoughAirtimeWidget">
             <h2>Enough airtime?</h2>
             <div class="message" x-text="billAmount">
                 The message will be displayed here...
@@ -95,7 +95,7 @@
 
             <button x-on:click="totalBill">submit</button>
         </div>
-        <div class="box" x-data="wordGameWidget">
+        <div class="box" x-data="wordWidget">
             <h2>Word puzzle game</h2>
             Longest word:<div class="message" x-text="longWord">
                 <!-- The message will be displayed here... -->
@@ -109,7 +109,7 @@
             <label for="string">Type your sentence in the field: </label>
             <input type="text" id="string" x-model="str">
 
-            <button @click="sentence">submit</button>
+            <button @click="mySentence">submit</button>
         </div>
 
         <div class="box" x-data="expensiveWidget">
@@ -133,7 +133,7 @@
 <script src="widgetjs/shift-widget.js"></script>
 <script src="widgetjs/phone-bill-widget.js"></script>
 <script src="widgetjs/enough-airtime-widget.js"></script>
-<script src="widgetjs/wordgame-widget.js"></script>
+<script src="widgetjs/wordGame-widget.js"></script>
 <script src="widgetjs/expensiveitems-widget.js"></script>
 <script src="widgetjs/cars-widget.js"></script>
 

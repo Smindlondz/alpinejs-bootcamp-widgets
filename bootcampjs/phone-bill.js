@@ -1,7 +1,7 @@
 //var services = 'call, sms, call, sms, sms'
 function totalPhoneBill(service) {
     // Declare a new counter and initialized to 0
-    if (!service){
+    if (!service.trim()){
         return '';
     };
     let counter = 0;

@@ -1,6 +1,6 @@
 document.addEventListener('alpine:init', () => {
 
-    Alpine.data('enoughAirtimeWdget', function () {
+    Alpine.data('enoughAirtimeWidget', function () {
         return {
             phoneUsage : '',
             availableAmount: null,
