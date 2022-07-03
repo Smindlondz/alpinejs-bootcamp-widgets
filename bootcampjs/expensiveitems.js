@@ -21,6 +21,11 @@ function findItemsOver(itemList, threshold) {
     };
     return results2;
 };
-
+var itemList = [
+    {name : 'apples', qty : 10},
+    {name : 'pears', qty : 37},
+    {name : 'bananas', qty : 27},
+    {name : 'apples', qty : 3},
+];
 
 

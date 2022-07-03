@@ -10,6 +10,10 @@
 // CARS WIDGETS
 // * Most popular car - list data
 // * Nissan from [CK] - list data
+// * MostBlueCars - list data
+// * mostPopularModel - list data
+// * MostPopularCL - list data
+
 
 // * carsForTown - townName string 
 // * numberOfCarsPerModel -  color, model, townName

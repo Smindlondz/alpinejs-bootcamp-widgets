@@ -30,7 +30,7 @@
         <div class="box" x-data="greetWidget">
             <h2>Greet widget</h2>
             <div class="message" x-text="greetMessage">
-                <!-- The message will be displayed here... -->
+               
             </div>
             <label for="string">Please submit your name: </label>
             <input type="text" id="string" x-model="name">
@@ -42,7 +42,7 @@
             
             <h2>Transport cost per shift</h2>
             <div x-text="shiftMsg" class="message">
-                <!-- The message will be displayed here... -->
+              
             </div>
             <fieldset>
                 <legend>Please select your shift: </legend>
@@ -70,7 +70,7 @@
         <div class="box" x-data="phoneBillWidget">
             <h2>Phone bill calculator</h2>
             <div class="message" x-text="billAmount">
-                The message will be displayed here...
+                
             </div>
             <label for="msg">Enter your daily phone usages:</label>
             <input type="text" id="msg" x-model="phoneUsage">
@@ -83,7 +83,7 @@
         <div class="box" x-data="enoughAirtimeWidget">
             <h2>Enough airtime?</h2>
             <div class="message" x-text="billAmount">
-                The message will be displayed here...
+                
             </div>
 
             <div>
@@ -104,7 +104,7 @@
                 <!-- The message will be displayed here... -->
             </div>
             Number of Letters:<div class="message" x-text="wordLength">
-                <!-- The message will be displayed here... -->
+                
             </div>
             <label for="string">Type your sentence in the field: </label>
             <input type="text" id="string" x-model="str">
@@ -116,12 +116,124 @@
        
             <h2>Expensive items</h2>
             <div class="message" x-text="JSON.stringify(data)" x-show="data.length > 0">
-                The message will be displayed here...
+                
             </div>
             <label for="msg">Enter threshold amount:</label>
             <input type="text" id="msg" x-model="threshold">
             <button @click="expensiveItems">submit</button>
             
+        </div>
+
+    </div>
+
+     <!-- Final part -->
+    <div class="container">
+
+        <div class="box" x-data="townCarsWidget">
+            <h2>Cars for given town</h2>
+            <div class="message" x-text="JSON.stringify(carsList)" x-show="carsList.length > 0">
+                
+                
+            </div>
+
+            <div>
+                <label for="msg">Choose town name:</label>
+                <div>
+                    <select name="town-names" id="town-names" x-model="town">
+
+                        <option value="select town"  >Select town</option>
+
+                        <option value="Paarl" >Paarl</option>
+                                
+                        <option value="Bellville" >Bellville</option>
+                
+                        <option value="Stellenbosch" >Stellenbosch</option>
+                                
+                        <option value="Malmesbury" >Malmesbury</option>
+
+                        <option value="Cape Town" >Cape Town</option>
+
+                        <option value="Kuilsriver">Kuilsriver</option>
+                    </select>
+                </div>
+            
+                <div style="text-align: start; padding: 0.8em;">
+                    <button  @click="showCars">submit</button>
+                </div>
+            </div>
+            
+            
+                       
+        </div>
+
+        <div class="box"  x-data="dataAnalysisWidget">
+            <h2>Data analysis of cars</h2>
+            Most popular car:<div class="message" x-text="mostPopular">
+                <!-- The message will be displayed here... -->
+            </div>
+            Number of Malmesbury Nissans:<div class="message" x-text="noOfCK">
+                <!-- The message will be displayed here... -->
+            </div>
+            Most popular model:<div class="message" x-text="popularModel">
+                <!-- The message will be displayed here... -->
+            </div>
+        
+            <div style="text-align: center;  margin: auto;">
+                <button  @click="algorithm">check-all</button>
+            </div>
+           
+        </div>
+
+        <div class="box" x-data="sameColorWidget">
+            <h2>Cars with same color</h2>
+            <div class="message" x-text="JSON.stringify(carsList)" x-show="carsList.length > 0">
+                
+                
+            </div>
+
+            <div>
+                <label for="msg">Choose town name:</label>
+                <div>
+                    <select name="town-names" id="town-names" x-model="town">
+
+                        <option value="select town"  >Select town</option>
+
+                        <option value="Paarl" >Paarl</option>
+                                
+                        <option value="Bellville" >Bellville</option>
+                
+                        <option value="Stellenbosch" >Stellenbosch</option>
+                                
+                        <option value="Malmesbury" >Malmesbury</option>
+
+                        <option value="Cape Town" >Cape Town</option>
+
+                        <option value="Kuilsriver">Kuilsriver</option>
+                    </select>
+                </div>
+                <label for="msg">Choose car color:</label>
+                <div>
+                    <select name="town-names" id="town-names" x-model="color">
+
+                        <option value="select color"  >Select color</option>
+
+                        <option value="blue" >Blue</option>
+                                
+                        <option value="orange" >Orange</option>
+                
+                        <option value="red" >Red</option>
+                                
+                        <option value="white" >White</option>
+                    </select>
+                </div>
+            
+                <div style="text-align: start; padding: 0.8em;">
+                    <button  @click="listOfCars">submit</button>
+                </div>
+            </div>
+            
+            
+                       
         </div>
 
     </div>

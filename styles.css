@@ -48,12 +48,21 @@ input {
     padding: 0.8em;
 
 }
+select {
+    margin: 0.8em;
+    /* padding: 0.8; */
+}
+#town-names{
+    width:250px;
+    height: 3em;   
+   }
 .message {
     padding: 1em;
     background-color: #909E84;
     margin-bottom: 1em;
     font-weight:600;
-    color: #194F92;;
+    color: #194F92;
+    overflow-x: auto;
 }
 .box {
     border: 3px solid #9AA4EC;
