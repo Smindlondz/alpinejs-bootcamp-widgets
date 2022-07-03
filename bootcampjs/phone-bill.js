@@ -3,7 +3,7 @@ function totalPhoneBill(service) {
     // Declare a new counter and initialized to 0
     if (!service){
         return '';
-    }
+    };
     let counter = 0;
     // Split the given string to create and array
     const totalServices = service.split(',');

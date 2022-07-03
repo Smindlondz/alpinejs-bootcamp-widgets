@@ -23,4 +23,4 @@ function findItemsOver(itemList, threshold) {
 };
 
 
-// let list = [{name:"Tsepang",age:17},{name:"Xoli",age:72},{name:"Sbu",age:23}]
+

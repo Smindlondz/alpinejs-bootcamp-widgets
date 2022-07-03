@@ -6,13 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <script src="bootcampjs/greet.js" defer></script>
-    <script src="widgetjs/greet-widget.js" defer></script>
     <script src="bootcampjs/shift.js" defer></script>
     <script src="bootcampjs/phone-bill.js" defer></script>
     <script src="bootcampjs/enough-airtime.js" defer></script>
     <script src="bootcampjs/wordgame.js" defer></script>
     <script src="bootcampjs/expensiveitems.js" defer></script>
+    <script src="bootcampjs/cars.js" defer></script>
+
     <script src="//unpkg.com/alpinejs" defer></script>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;900&display=swap"
@@ -36,15 +38,8 @@
             <button x-on:click="greetMe">submit</button>
         </div>
 
-        <div class="box" x-data="{
-            shiftMsg : '',
-            shift : 'value',
-            displayShift() {
-                this.shiftMsg = transportFee(this.shift);
-            }
-
-        }">
-            <!-- <h1 x-text="shift"> </h1> -->
+        <div class="box" x-data="shiftWidget">
+            
             <h2>Transport cost per shift</h2>
             <div x-text="shiftMsg" class="message">
                 <!-- The message will be displayed here... -->
@@ -53,34 +48,26 @@
                 <legend>Please select your shift: </legend>
 
                 <div>
-                    <input x-model="shift" type="radio" name="cost" id="morning" value="morning">
-                    <label for="morning">Morning</label>
+                    <input x-model="shift" type="radio" name="cost" id="morning" 
+                    value="morning" @change="displayShift">
+                    <label for="morning">Morning</label><br />
                 </div>
 
                 <div>
-                    <input x-model="shift" type="radio" name="cost" id="afternoon" value="afternoon">
-                    <label for="afternoon">Afternoon</label>
+                    <input x-model="shift" type="radio" name="cost" id="afternoon" 
+                    value="afternoon" @change="displayShift">
+                    <label for="afternoon">Afternoon</label><br />
                 </div>
 
                 <div>
-                    <input x-model="shift" type="radio" name="cost" id="night" value="nightshift">
+                    <input x-model="shift" type="radio" name="cost" id="night"
+                     value="nightshift" @change ="displayShift">
                     <label for="night">Night</label>
                 </div>
             </fieldset>
         </div>
 
-        <div class="box" x-data="{
-            phoneUsage : '',
-            billAmount : '',
-            totalBill() {
-                this.billAmount = totalPhoneBill(this.phoneUsage);
-
-                setTimeout(() => {
-                    this.billAmount = '';
-                    this.phoneUsage = '';
-                }, 3500)
-            }
-        }">
+        <div class="box" x-data="phoneBillWidget">
             <h2>Phone bill calculator</h2>
             <div class="message" x-text="billAmount">
                 The message will be displayed here...
@@ -93,21 +80,8 @@
     </div>
     <div class="container">
 
-        <div class="box" x-data="{
-            phoneUsage : '',
-            availableAmount: null,
-            billAmount : '',
-            totalBill() {
-                this.billAmount = enoughAirtime(this.phoneUsage, this.availableAmount);
-
-                setTimeout(() => {
-                    this.billAmount = '';
-                    this.phoneUsage = '';
-                    this.availableAmount = '';
-                }, 3500)
-            }
-        }">
-            <h2>Phone bill calculator</h2>
+        <div class="box" x-data="enoughAirtimeWdget">
+            <h2>Enough airtime?</h2>
             <div class="message" x-text="billAmount">
                 The message will be displayed here...
             </div>
@@ -121,27 +95,7 @@
 
             <button x-on:click="totalBill">submit</button>
         </div>
-        <div class="box" x-data="{
-            str : '',
-            longWord : '',
-            shortWord : '',
-            words : '',
-
-            sentence() {
-                this.longWord = longestWord(this.str);
-                this.shortWord = shortestWord(this.str);
-                this.words = wordLengths(this.str);
-
-                setTimeout(() => {
-                    this.longWord = '';
-                    this.shortWord = '';
-                    this.words = '';
-                    this.str = '';
-                }, 3500)
-            }
-            
-
-        }">
+        <div class="box" x-data="wordGameWidget">
             <h2>Word puzzle game</h2>
             Longest word:<div class="message" x-text="longWord">
                 <!-- The message will be displayed here... -->
@@ -149,49 +103,38 @@
                 Shortest word:<div class="message" x-text="shortWord">
                 <!-- The message will be displayed here... -->
             </div>
-            Number of words:<div class="message" x-text="words">
+            Number of Letters:<div class="message" x-text="wordLength">
                 <!-- The message will be displayed here... -->
             </div>
             <label for="string">Type your sentence in the field: </label>
             <input type="text" id="string" x-model="str">
 
-            <button x-on:click="sentence">submit</button>
+            <button @click="sentence">submit</button>
         </div>
 
-        <div class="box" x-data="{
-            message : '',
-            threshold : 0,
-            data : [],
-            itemList : [ {name : 'apples', qty : 10}, {name : 'pears', qty : 37}],
-
-            expensiveItems() {
-                this. = findItemsOver(this.itemList, this.threshold);
-                
-            }
-            
-        }">
-        <template x-for="item in itemList">
-            <li x-text="item.name">
-                
-            </li>
-        </template>
-
+        <div class="box" x-data="expensiveWidget">
+       
             <h2>Expensive items</h2>
-            <div class="message">
+            <div class="message" x-text="JSON.stringify(data)" x-show="data.length > 0">
                 The message will be displayed here...
             </div>
-            <div>
-                <label for="msg"></label>
-                <input type="text" id="msg" x-model="message">
-            </div>
-            <label for="msg"></label>
+            <label for="msg">Enter threshold amount:</label>
             <input type="text" id="msg" x-model="threshold">
-            <button x-on:click="expensiveItems">submit</button>
+            <button @click="expensiveItems">submit</button>
+            
         </div>
 
     </div>
 
-
 </body>
+    <!-- Importing widget functions -->
+
+<script src="widgetjs/greet-widget.js"></script>
+<script src="widgetjs/shift-widget.js"></script>
+<script src="widgetjs/phone-bill-widget.js"></script>
+<script src="widgetjs/enough-airtime-widget.js"></script>
+<script src="widgetjs/wordgame-widget.js"></script>
+<script src="widgetjs/expensiveitems-widget.js"></script>
+<script src="widgetjs/cars-widget.js"></script>
 
 </html>
