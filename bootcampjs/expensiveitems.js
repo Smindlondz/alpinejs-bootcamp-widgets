@@ -1,5 +1,6 @@
 function findItemsOver20(itemList) {
     var results = [];
+
     for (var i = 0; i < itemList.length; i++) {
         var listItem = itemList[i];
 
@@ -12,7 +13,9 @@ function findItemsOver20(itemList) {
 
 function findItemsOver(itemList, threshold) {
     var results2 = [];
-
+    if (!threshold.trim()){
+        return '';
+    }
     for (var i = 0; i < itemList.length; i++) {
         var listItem = itemList[i];
         if (listItem.qty > threshold) {
