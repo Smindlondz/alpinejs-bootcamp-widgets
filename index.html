@@ -118,7 +118,8 @@
             <div class="message" x-text="JSON.stringify(data)" x-show="data.length > 0">
                 
             </div>
-            <label for="msg">Enter threshold amount:</label>
+            
+            <label for="msg">Search for items with qty over:</label>
             <input type="text" id="msg" x-model="threshold">
             <button @click="expensiveItems">submit</button>
             
