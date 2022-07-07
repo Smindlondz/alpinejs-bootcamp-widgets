@@ -12,7 +12,7 @@ document.addEventListener('alpine:init', () => {
                 setTimeout(() => {
                     this.greetMessage = '';
                     this.name = '';
-                }, 3500)
+                }, 4500)
             }
         }
     });

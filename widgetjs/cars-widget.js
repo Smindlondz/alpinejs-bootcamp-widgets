@@ -11,7 +11,7 @@ document.addEventListener('alpine:init', () => {
                 setTimeout(() => {
                     this.carsList = [];
                     this.town = '';
-                }, 4500)
+                }, 6000)
             }
         }
     });
@@ -31,7 +31,7 @@ document.addEventListener('alpine:init', () => {
                     this.mostPopular = '';
                     this.noOfCK = null;
                     this.popularModel = '';
-                }, 3500)
+                }, 6000)
             }
         }
     });
@@ -48,7 +48,7 @@ document.addEventListener('alpine:init', () => {
                     this.carsList = [];
                     this.town = '';
                     this.color = '';
-                }, 4500)
+                }, 6000)
             }
         }
     });

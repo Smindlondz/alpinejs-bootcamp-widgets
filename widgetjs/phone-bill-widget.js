@@ -10,7 +10,7 @@ document.addEventListener('alpine:init', () => {
                 setTimeout(() => {
                     this.billAmount = '';
                     this.phoneUsage = '';
-                }, 3500)
+                }, 5000)
             }
         }
     });

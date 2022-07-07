@@ -9,7 +9,7 @@ document.addEventListener('alpine:init', () => {
                 setTimeout(() => {
                     this.data = [];
                     this.threshold = '';
-                }, 3500)
+                }, 5000)
             }
         }
     });

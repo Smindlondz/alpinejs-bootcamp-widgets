@@ -10,7 +10,7 @@ document.addEventListener('alpine:init', () => {
                 setTimeout(() => {
                     this.shift = '';
                     this.shiftMsg = '';
-                }, 3500)
+                }, 5000)
             }
         }
     });

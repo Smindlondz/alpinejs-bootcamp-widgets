@@ -12,7 +12,7 @@ document.addEventListener('alpine:init', () => {
                     this.billAmount = '';
                     this.phoneUsage = '';
                     this.availableAmount = '';
-                }, 3500)
+                }, 5000)
             }
         }
     });
